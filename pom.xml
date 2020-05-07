@@ -15,7 +15,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
     <maven.surefire.plugin.version>3.0.0-M4</maven.surefire.plugin.version>
-    <constructor.parts.version>0.1.0-SNAPSHOT</constructor.parts.version>
+    <constructor.core.version>1.0.0</constructor.core.version>
+    <constructor.javasdk.version>0.1.0-SNAPSHOT</constructor.javasdk.version>
+    <constructor.stringvalue.version>1.0.0</constructor.stringvalue.version>
     <junit.jupiter.version>5.6.2</junit.jupiter.version>
   </properties>
 
@@ -48,23 +50,33 @@
       <dependency>
         <groupId>com.zkejid.constructor</groupId>
         <artifactId>core-api</artifactId>
-        <version>${constructor.parts.version}</version>
+        <version>${constructor.core.version}</version>
       </dependency>
       <dependency>
         <groupId>com.zkejid.constructor</groupId>
         <artifactId>core-impl</artifactId>
-        <version>${constructor.parts.version}</version>
+        <version>${constructor.core.version}</version>
       </dependency>
 
       <dependency>
         <groupId>com.zkejid.constructor</groupId>
         <artifactId>javasdk-system-api</artifactId>
-        <version>${constructor.parts.version}</version>
+        <version>${constructor.javasdk.version}</version>
       </dependency>
       <dependency>
         <groupId>com.zkejid.constructor</groupId>
         <artifactId>javasdk-system-impl</artifactId>
-        <version>${constructor.parts.version}</version>
+        <version>${constructor.javasdk.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.zkejid.constructor</groupId>
+        <artifactId>string-value-api</artifactId>
+        <version>${constructor.stringvalue.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.zkejid.constructor</groupId>
+        <artifactId>string-value-impl</artifactId>
+        <version>${constructor.stringvalue.version}</version>
       </dependency>
 
       <dependency>

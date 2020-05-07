@@ -6,8 +6,19 @@ package com.zkejid.constructor.cliarguments.api.v1;
  * <a href="https://www.gnu.org/software/libc/manual/html_node/Argument-Syntax.html">here</a>.
  * <p>
  * Object holds the state of arguments configuration and provides methods for argument registration:
- * {@link #addFlag(String, String)},
- * {@link #addProperty(String, String)}.
+ * {@link #addFlag(String, String)}, {@link #addProperty(String, String)}.
+ * <p>
+ * Arguments fall into three categories:
+ * <ul>
+ *   <li>flags,
+ *   <li>properties,
+ *   <li>plain arguments.
+ * </ul>
+ * <strong>Flags</strong> are boolean arguments with {@code true} value mapped to flag existence and
+ * {@code false} value mapped to flag nonexistence. <strong>Properties</strong> are string arguments
+ * with value directly specified in the argument. The rest of arguments fall into
+ * <strong>plain group</strong>. Parser is not able to recognize it and returns this group as a
+ * list of string values.
  */
 public interface ArgumentsParser {
 

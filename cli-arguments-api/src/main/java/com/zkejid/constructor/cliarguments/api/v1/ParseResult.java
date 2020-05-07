@@ -1,5 +1,6 @@
 package com.zkejid.constructor.cliarguments.api.v1;
 
+import com.zkejid.constructor.stringvalue.api.v1.StringValue;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +14,16 @@ public interface ParseResult {
    * the state of {@link ArgumentsParser} at the moment of parsing. Each flag maps to the string
    * value {@code "true"} if flag exists or {@code "false"} if flag does not exist. Each property
    * maps to its value.
+   * <p>
+   * {@link StringValue#getInputValueType()} means actual existence of the key in the arguments
+   * list. {@link com.zkejid.constructor.stringvalue.api.v1.InputValueType#EMPTY_VALUE} belongs
+   * to an existing flag or a property without value.
+   * {@link com.zkejid.constructor.stringvalue.api.v1.InputValueType#OMITTED} belongs to an omitted
+   * flag or a nonexisting property.
+   * {@link com.zkejid.constructor.stringvalue.api.v1.InputValueType#SPECIFIED} belongs to an
+   * existing property and doesn't belong to a flag.
    */
-  Map<Argument, Value> getArgumentsParsed();
+  Map<Argument, StringValue> getArgumentsParsed();
 
   /**
    * Return plain arguments which are neither flags nor properties. Method keeps the order of
@@ -22,49 +31,4 @@ public interface ParseResult {
    */
   List<String> getPlainArguments();
 
-  /**
-   * Types of values differentiated by how does argument specified. Type makes a great influence on
-   * actual value, which is returned by {@link Value#getValue()}.
-   */
-  enum ArgumentType {
-
-    /**
-     * Property or flag specified clearly in the arguments list. String value of flag would be
-     * {@code "true"}. String value of property would be as specified in the arguments list.
-     */
-    SPECIFIED,
-
-    /**
-     * Property specified but has empty value. Flag couldn't belong to this type. String value
-     * of property would be an empty string.
-     */
-    EMPTY_VALUE,
-
-    /**
-     * Property or flag omitted in the arguments list. String value of flag would be
-     * {@code "false"}. String value of property would be an empty string.
-     */
-    OMITTED
-  }
-
-  /**
-   * Representation of argument value as it is specified or not specified in the arguments list.
-   */
-  final class Value {
-    private final ArgumentType argumentType;
-    private final String value;
-
-    public Value(ArgumentType argumentType, String value) {
-      this.argumentType = argumentType;
-      this.value = value;
-    }
-
-    public ArgumentType getArgumentType() {
-      return argumentType;
-    }
-
-    public String getValue() {
-      return value;
-    }
-  }
 }

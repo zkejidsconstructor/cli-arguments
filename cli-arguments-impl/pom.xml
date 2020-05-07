@@ -11,5 +11,11 @@
 
   <artifactId>cli-arguments-impl</artifactId>
 
+  <dependencies>
+    <dependency>
+      <groupId>com.zkejid.constructor</groupId>
+      <artifactId>string-value-impl</artifactId>
+    </dependency>
+  </dependencies>
 
 </project>
