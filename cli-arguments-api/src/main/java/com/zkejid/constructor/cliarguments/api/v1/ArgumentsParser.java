@@ -28,8 +28,9 @@ public interface ArgumentsParser {
    * @param shortName short one-letter name of the flag. Can be null.
    * @param longName long kebab-case name of the flag. Can be null.
    * @return descriptor of the registered flag.
-   * @throws CliArgumentsException if short or long name clashes with current state of the parser
-   *                               or both arguments are null
+   * @throws CliArgumentsException if short or long name clashes with current state of the parser,
+   *                               if both arguments are null,
+   *                               if any of arguments is empty string.
    */
   Argument addFlag(String shortName, String longName);
 
@@ -39,8 +40,9 @@ public interface ArgumentsParser {
    * @param shortName short one-letter name of the property. Can be null.
    * @param longName long kebab-case name of the property. Can be null.
    * @return descriptor of the registered property.
-   * @throws CliArgumentsException if short or long name clashes with current state of the parser
-   *                               or both arguments are null.
+   * @throws CliArgumentsException if short or long name clashes with current state of the parser,
+   *                               if both arguments are null,
+   *                               if any of arguments is empty string.
    */
   Argument addProperty(String shortName, String longName);
 
