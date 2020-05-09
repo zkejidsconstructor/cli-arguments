@@ -13,9 +13,18 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="cli-arguments-api" />
     <orderEntry type="library" name="Maven: com.zkejid.constructor:string-value-api:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.zkejid.constructor:string-value-impl:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.zkejid.constructor:core-api:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.zkejid.constructor:core-impl:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.4" level="project" />
+    <orderEntry type="module" module-name="cli-arguments-apitest" scope="TEST" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter:5.6.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.6.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-commons:1.6.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-params:5.6.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.6.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.6.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.zkejid.constructor:string-value-impl:1.0.0" level="project" />
   </component>
 </module>

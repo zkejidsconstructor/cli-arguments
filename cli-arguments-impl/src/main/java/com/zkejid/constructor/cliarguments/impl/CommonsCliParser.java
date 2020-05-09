@@ -63,7 +63,7 @@ public class CommonsCliParser implements ArgumentsParser {
     final DefaultParser parser = new DefaultParser();
     while (cmd == null && currentArgs.length > 0) {
       try {
-        cmd = parser.parse(getOptions(), args);
+        cmd = parser.parse(getOptions(), currentArgs);
       } catch (UnrecognizedOptionException e) {
         int oldValue = currentArgs.length;
         final String tokenToRemove = e.getOption();

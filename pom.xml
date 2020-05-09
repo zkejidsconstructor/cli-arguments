@@ -54,6 +54,12 @@
         <artifactId>cli-arguments-api</artifactId>
         <version>${constructor.cliarguments.version}</version>
       </dependency>
+      <dependency>
+        <groupId>com.zkejid.constructor</groupId>
+        <artifactId>cli-arguments-apitest</artifactId>
+        <version>${constructor.cliarguments.version}</version>
+        <scope>test</scope>
+      </dependency>
 
       <dependency>
         <groupId>com.zkejid.constructor</groupId>
