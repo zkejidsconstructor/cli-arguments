@@ -53,12 +53,4 @@ public interface ArgumentsParser {
    * @return result of the method.
    */
   ParseResult parse(String[] args);
-
-  /**
-   * Parse given arguments string with current state of the parser.
-   *
-   * @param args string of space-separated arguments in POSIX or GNU-like format.
-   * @return result of the method.
-   */
-  ParseResult parse(String args);
 }

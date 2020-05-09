@@ -79,11 +79,6 @@ public class CommonsCliParser implements ArgumentsParser {
     return cmd;
   }
 
-  @Override
-  public ParseResult parse(String args) {
-    return parse(args.split(" "));
-  }
-
   private Options getOptions() {
     final Options options = new Options();
     for (CommonsCliOptionArgument argument : arguments) {
