@@ -6,13 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="cli-arguments-impl" />
+        <module name="cli-arguments-apitest" />
         <module name="cli-arguments-api" />
+        <module name="cli-arguments-impl" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="cli-arguments" target="9" />
       <module name="cli-arguments-api" target="9" />
+      <module name="cli-arguments-apitest" target="9" />
       <module name="cli-arguments-impl" target="9" />
     </bytecodeTargetLevel>
   </component>

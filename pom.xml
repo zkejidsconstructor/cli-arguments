@@ -25,6 +25,7 @@
   <modules>
     <module>cli-arguments-api</module>
     <module>cli-arguments-impl</module>
+    <module>cli-arguments-apitest</module>
   </modules>
 
   <build>

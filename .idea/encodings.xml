@@ -3,6 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/cli-arguments-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cli-arguments-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cli-arguments-apitest/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cli-arguments-apitest/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cli-arguments-impl/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cli-arguments-impl/src/main/resources" charset="UTF-8" />
   </component>
