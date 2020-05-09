@@ -1,19 +1,19 @@
 package com.zkejid.constructor.cliarguments.impl;
 
 import com.zkejid.constructor.cliarguments.api.v1.ArgumentsParser;
-import com.zkejid.constructor.cliarguments.api.v1.ArgumentsParserProvider;
+import com.zkejid.constructor.cliarguments.api.v1.ArgumentsParserFactory;
 import com.zkejid.constructor.core.api.v1.ConstructionException;
 import com.zkejid.constructor.core.api.v1.ConstructorPart;
 import com.zkejid.constructor.stringvalue.api.v1.StringValueFactory;
 import java.util.Collections;
 import java.util.Set;
 
-public class ArgumentsParserProviderImpl implements ArgumentsParserProvider, ConstructorPart {
+public class ArgumentsParserFactoryImpl implements ArgumentsParserFactory, ConstructorPart {
 
   private StringValueFactory stringValueFactory;
 
   @Override
-  public ArgumentsParser getParser() {
+  public ArgumentsParser createParser() {
     return new CommonsCliParser(stringValueFactory);
   }
 
@@ -24,12 +24,12 @@ public class ArgumentsParserProviderImpl implements ArgumentsParserProvider, Con
 
   @Override
   public Set<Class<?>> getInterfacesProvided() {
-    return Collections.singleton(ArgumentsParserProvider.class);
+    return Collections.singleton(ArgumentsParserFactory.class);
   }
 
   @Override
   public Object getImplementation(Class<?> aClass) throws ConstructionException {
-    if (ArgumentsParserProvider.class.equals(aClass)) {
+    if (ArgumentsParserFactory.class.equals(aClass)) {
       return this;
     } else {
       throw new ConstructionException("Module doesn't provide implementation of " + aClass);
