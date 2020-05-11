@@ -18,9 +18,4 @@ public interface Argument {
    * @return name of the argument or empty string if no long name specified.
    */
   String getLongName();
-
-  /**
-   * Returns textual description of argument. Returns empty string if no description specified.
-   */
-  String getDescription();
 }

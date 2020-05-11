@@ -21,11 +21,6 @@ class CommonsCliOptionArgument implements Argument {
     return option.getLongOpt();
   }
 
-  @Override
-  public String getDescription() {
-    return option.getDescription();
-  }
-
   Option getOption() {
     return option;
   }
