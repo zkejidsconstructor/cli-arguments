@@ -30,7 +30,9 @@ public interface ArgumentsParser {
    * @return descriptor of the registered flag.
    * @throws CliArgumentsException if short or long name clashes with current state of the parser,
    *                               if both arguments are null,
-   *                               if any of arguments is empty string.
+   *                               if any of arguments is empty string,
+   *                               if short name has length longer than 1 letter,
+   *                               if long name has length smaller than 2 letters.
    */
   Argument addFlag(String shortName, String longName);
 
@@ -42,7 +44,9 @@ public interface ArgumentsParser {
    * @return descriptor of the registered property.
    * @throws CliArgumentsException if short or long name clashes with current state of the parser,
    *                               if both arguments are null,
-   *                               if any of arguments is empty string.
+   *                               if any of arguments is empty string,
+   *                               if short name has length longer than 1 letter,
+   *                               if long name has length smaller than 2 letters.
    */
   Argument addProperty(String shortName, String longName);
 
