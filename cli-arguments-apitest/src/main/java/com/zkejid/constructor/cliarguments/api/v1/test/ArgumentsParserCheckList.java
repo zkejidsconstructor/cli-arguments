@@ -498,4 +498,17 @@ public abstract class ArgumentsParserCheckList {
 
     Assertions.assertNotNull(parseResult);
   }
+
+  @DisplayName("Can parse if several flags are merged in one token")
+  @Test
+  void parse_threeFlagsInOneToken_success() {
+    final ArgumentsParser parser = getArgumentsParser();
+    parser.addFlag("a", null);
+    parser.addFlag("b", null);
+    parser.addFlag("c", null);
+
+    final ParseResult parseResult = parser.parse(new String[]{"-abc"});
+
+    Assertions.assertNotNull(parseResult);
+  }
 }

@@ -5,7 +5,7 @@ package com.zkejid.constructor.cliarguments.api.v1;
  * <p>
  * Factory does not hold the state.
  */
-public interface ArgumentsParserFactory {
+public interface ArgumentsFactory {
 
   /**
    * Create parser for handling POSIX and GNU style arguments like {@code ls -al logs}

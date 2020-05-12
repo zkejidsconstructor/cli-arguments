@@ -1,8 +1,8 @@
 package com.zkejid.constructor.cliarguments.api.v1.test;
 
 import com.zkejid.constructor.cliarguments.api.v1.Argument;
+import com.zkejid.constructor.cliarguments.api.v1.ArgumentsFactory;
 import com.zkejid.constructor.cliarguments.api.v1.ArgumentsParser;
-import com.zkejid.constructor.cliarguments.api.v1.ArgumentsParserFactory;
 import com.zkejid.constructor.cliarguments.api.v1.ParseResult;
 import com.zkejid.constructor.stringvalue.api.v1.StringValue;
 import java.util.Map;
@@ -11,17 +11,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
- * The list of checks. Each implementation of {@link ArgumentsParserFactory} should pass
+ * The list of checks. Each implementation of {@link ArgumentsFactory} should pass
  * given checks to match requirements of the API.
  */
-public abstract class ArgumentsParserFactoryCheckList {
+public abstract class ArgumentsFactoryCheckList {
 
-  public abstract ArgumentsParserFactory getFactoryImplementation();
+  public abstract ArgumentsFactory getFactoryImplementation();
 
   @DisplayName("Factory can create one parser")
   @Test
   void createParser_oneCall_success() {
-    final ArgumentsParserFactory factory = getFactoryImplementation();
+    final ArgumentsFactory factory = getFactoryImplementation();
 
     final ArgumentsParser parser = factory.createParser();
 
@@ -31,7 +31,7 @@ public abstract class ArgumentsParserFactoryCheckList {
   @DisplayName("Two parsers have independent states")
   @Test
   void createParser_twoCalls_bothParsersHaveIndependentState() {
-    final ArgumentsParserFactory factory = getFactoryImplementation();
+    final ArgumentsFactory factory = getFactoryImplementation();
 
     final ArgumentsParser parser1 = factory.createParser();
     final Argument f1 = parser1.addFlag("a", "a-flag-1");
@@ -56,7 +56,7 @@ public abstract class ArgumentsParserFactoryCheckList {
   @DisplayName("Factory calls return different instances of parser")
   @Test
   void createParser_twoCalls_differentInstances() {
-    final ArgumentsParserFactory factory = getFactoryImplementation();
+    final ArgumentsFactory factory = getFactoryImplementation();
 
     final ArgumentsParser parser1 = factory.createParser();
     final ArgumentsParser parser2 = factory.createParser();
