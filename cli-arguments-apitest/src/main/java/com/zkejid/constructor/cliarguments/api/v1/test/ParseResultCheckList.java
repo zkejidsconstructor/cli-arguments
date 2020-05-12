@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
  */
 public abstract class ParseResultCheckList {
 
-  abstract ArgumentsParser getArgumentsParser();
+  public abstract ArgumentsParser getArgumentsParser();
 
   // getArgumentsParsed tests
 
