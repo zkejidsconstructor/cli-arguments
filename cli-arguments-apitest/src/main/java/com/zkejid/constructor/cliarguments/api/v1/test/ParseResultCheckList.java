@@ -138,8 +138,8 @@ public abstract class ParseResultCheckList {
   @Test
   void getArgumentsParsed_twoRegisteredAndOneUnregisteredFlagMergedIntoToken_success() {
     final ArgumentsParser parser = getArgumentsParser();
-    final Argument flagA = parser.addProperty("a", "aa");
-    final Argument flagB = parser.addProperty("b", "bb");
+    final Argument flagA = parser.addFlag("a", "aa");
+    final Argument flagB = parser.addFlag("b", "bb");
 
     final ParseResult result = parser.parse(new String[]{"-abc"});
     final Map<Argument, StringValue> argumentsParsed = result.getArgumentsParsed();
