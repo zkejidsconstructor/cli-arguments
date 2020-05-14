@@ -115,12 +115,12 @@ public abstract class ParseResultCheckList {
     Assertions.assertEquals(InputValueType.OMITTED, stringValue.getInputValueType());
   }
 
-  @DisplayName("Can correctly parse several flags merged into one token by short name")
+  @DisplayName("If token is a merge of flags, then all flags can be parsed")
   @Test
   void getArgumentsParsed_twoFlagsMergedIntoToken_success() {
     final ArgumentsParser parser = getArgumentsParser();
-    final Argument flagA = parser.addProperty("a", "aa");
-    final Argument flagB = parser.addProperty("b", "bb");
+    final Argument flagA = parser.addFlag("a", "aa");
+    final Argument flagB = parser.addFlag("b", "bb");
 
     final ParseResult result = parser.parse(new String[]{"-ab"});
     final Map<Argument, StringValue> argumentsParsed = result.getArgumentsParsed();
@@ -134,23 +134,34 @@ public abstract class ParseResultCheckList {
     Assertions.assertEquals(InputValueType.SPECIFIED, stringValueB.getInputValueType());
   }
 
-  @DisplayName("Can correctly parse flags merged into one token and mixed with unregistered flag")
+  @DisplayName("Can parse flag if marked with double hyphen")
   @Test
-  void getArgumentsParsed_twoRegisteredAndOneUnregisteredFlagMergedIntoToken_success() {
+  void getArgumentsParsed_flagWithDoubleHyphen_success() {
     final ArgumentsParser parser = getArgumentsParser();
     final Argument flagA = parser.addFlag("a", "aa");
-    final Argument flagB = parser.addFlag("b", "bb");
 
-    final ParseResult result = parser.parse(new String[]{"-abc"});
+    final ParseResult result = parser.parse(new String[]{"--a"});
     final Map<Argument, StringValue> argumentsParsed = result.getArgumentsParsed();
 
-    Assertions.assertEquals(2, argumentsParsed.size(), "Expect 2 arguments");
-    final StringValue stringValueA = argumentsParsed.get(flagA);
-    Assertions.assertEquals("true", stringValueA.getValue());
-    Assertions.assertEquals(InputValueType.SPECIFIED, stringValueA.getInputValueType());
-    final StringValue stringValueB = argumentsParsed.get(flagB);
-    Assertions.assertEquals("true", stringValueB.getValue());
-    Assertions.assertEquals(InputValueType.SPECIFIED, stringValueB.getInputValueType());
+    Assertions.assertEquals(1, argumentsParsed.size(), "Expect 1 argument");
+    final StringValue stringValue = argumentsParsed.get(flagA);
+    Assertions.assertEquals("true", stringValue.getValue());
+    Assertions.assertEquals(InputValueType.SPECIFIED, stringValue.getInputValueType());
+  }
+
+  @DisplayName("Can parse property if marked with single hyphen")
+  @Test
+  void getArgumentsParsed_propertyWithSingleHyphen_success() {
+    final ArgumentsParser parser = getArgumentsParser();
+    final Argument flagA = parser.addProperty("a", "aa");
+
+    final ParseResult result = parser.parse(new String[]{"-aa=hello"});
+    final Map<Argument, StringValue> argumentsParsed = result.getArgumentsParsed();
+
+    Assertions.assertEquals(1, argumentsParsed.size(), "Expect 1 argument");
+    final StringValue stringValue = argumentsParsed.get(flagA);
+    Assertions.assertEquals("hello", stringValue.getValue());
+    Assertions.assertEquals(InputValueType.SPECIFIED, stringValue.getInputValueType());
   }
 
   // getPlainArguments tests
@@ -203,17 +214,41 @@ public abstract class ParseResultCheckList {
     Assertions.assertEquals("-Djava.type.property=hello", plainArguments.get(0));
   }
 
-  @DisplayName("Unregistered part of merged into one token flags results into plain argument")
+  /**
+   * Merged flags should be processed by a single arguments list. If token contains both
+   * registered and unregistered flags, then it could be the option handled by other
+   * argument parser.
+   */
+  @DisplayName(
+      "If token looks like merge flags token but has unregistered part, "
+          + "then treat it as plain argument"
+  )
   @Test
-  void getPlainArguments_tokenOfMergedFlagsContainsUnregisteredFlags_isPlainArgument() {
+  void getPlainArguments_twoRegisteredAndOneUnregisteredFlagMergedIntoToken_success() {
+    final ArgumentsParser parser = getArgumentsParser();
+    parser.addFlag("a", "aa");
+    parser.addFlag("b", "bb");
+
+    final ParseResult result = parser.parse(new String[]{"-abc"});
+    final List<String> plainArguments = result.getPlainArguments();
+
+    Assertions.assertEquals(1, plainArguments.size());
+    Assertions.assertEquals("-abc", plainArguments.get(0));
+  }
+
+  @DisplayName("Argument -- stops parsing and rest of arguments counts as plain")
+  @Test
+  void getPlainArguments_doubleHiphen_separatesPlainArguments() {
     final ArgumentsParser parser = getArgumentsParser();
     final Argument flagA = parser.addFlag("a", "aa");
     final Argument flagB = parser.addFlag("b", "bb");
 
-    final ParseResult result = parser.parse(new String[]{"-abcd"});
+    final ParseResult result = parser.parse(new String[]{"--aa", "--", "--bb", "--cc", "dddd"});
     final List<String> plainArguments = result.getPlainArguments();
 
-    Assertions.assertEquals(1, plainArguments.size(), "Expect 1 plain argument");
-    Assertions.assertEquals("-cd", plainArguments.get(0));
+    Assertions.assertEquals(3, plainArguments.size(), "Expect 3 plain arguments");
+    Assertions.assertEquals("--bb", plainArguments.get(0));
+    Assertions.assertEquals("--cc", plainArguments.get(1));
+    Assertions.assertEquals("dddd", plainArguments.get(2));
   }
 }

@@ -511,4 +511,38 @@ public abstract class ArgumentsParserCheckList {
 
     Assertions.assertNotNull(parseResult);
   }
+
+  @DisplayName("Can parse if merge token contains both registered and unregistered flags")
+  @Test
+  void parse_registeredAndUnregisteredFlagsInOneToken_success() {
+    final ArgumentsParser parser = getArgumentsParser();
+    parser.addFlag("a", null);
+    parser.addFlag("b", null);
+
+    final ParseResult parseResult = parser.parse(new String[]{"-abc"});
+
+    Assertions.assertNotNull(parseResult);
+  }
+
+  @DisplayName("Can parse if flag has double hyphen mark")
+  @Test
+  void parse_flagHasDoubleHyphenMark_success() {
+    final ArgumentsParser parser = getArgumentsParser();
+    parser.addFlag("a", null);
+
+    final ParseResult parseResult = parser.parse(new String[]{"--a"});
+
+    Assertions.assertNotNull(parseResult);
+  }
+
+  @DisplayName("Can parse if property has single hyphen mark")
+  @Test
+  void parse_propertyHasSingleHyphenMark_success() {
+    final ArgumentsParser parser = getArgumentsParser();
+    parser.addProperty("a", "aa");
+
+    final ParseResult parseResult = parser.parse(new String[]{"-aa=hello"});
+
+    Assertions.assertNotNull(parseResult);
+  }
 }

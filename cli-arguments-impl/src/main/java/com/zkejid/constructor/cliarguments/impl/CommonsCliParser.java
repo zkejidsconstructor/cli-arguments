@@ -133,7 +133,22 @@ public class CommonsCliParser implements ArgumentsParser {
     for (Option option : emptyValueProperties) {
       CommonsHelper.addOptionToCmd(cmd, option);
     }
+    // should be after merge
+    verifyNoRepeatedOptions(cmd);
     return cmd;
+  }
+
+  private void verifyNoRepeatedOptions(CommandLine cmd) {
+    final Option[] options = cmd.getOptions();
+    for (int i = 0; i < options.length; i++) {
+      Option currentOption = options[i];
+      for (int j = i + 1; j < options.length; j++) {
+        Option otherOption = options[j];
+        if (otherOption.equals(currentOption)) {
+          throw new CliArgumentsException("There is a repeat in arguments: " + currentOption);
+        }
+      }
+    }
   }
 
   private String getPropertyTokenFromOption(String[] currentArgs, Option option) {
