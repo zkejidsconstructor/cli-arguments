@@ -18,14 +18,15 @@
     <constructor.cliarguments.version>0.1.0-SNAPSHOT</constructor.cliarguments.version>
     <constructor.core.version>1.0.0</constructor.core.version>
     <constructor.javasdk.version>0.1.0-SNAPSHOT</constructor.javasdk.version>
-    <constructor.stringvalue.version>1.0.0</constructor.stringvalue.version>
+    <constructor.stringvalue.version>1.0.1</constructor.stringvalue.version>
     <junit.jupiter.version>5.6.2</junit.jupiter.version>
   </properties>
 
   <modules>
     <module>cli-arguments-api</module>
-    <module>cli-arguments-impl</module>
     <module>cli-arguments-apitest</module>
+    <module>cli-arguments-impl</module>
+    <module>cli-arguments-helloworld</module>
   </modules>
 
   <build>
@@ -59,6 +60,11 @@
         <artifactId>cli-arguments-apitest</artifactId>
         <version>${constructor.cliarguments.version}</version>
         <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.zkejid.constructor</groupId>
+        <artifactId>cli-arguments-impl</artifactId>
+        <version>${constructor.cliarguments.version}</version>
       </dependency>
 
       <dependency>
