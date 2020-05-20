@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/zkejidsconstructor/cli-arguments.svg?branch=master)](https://travis-ci.com/zkejidsconstructor/cli-arguments)
 # CliArguments library
 Constructor part for handling command line arguments. 
 
