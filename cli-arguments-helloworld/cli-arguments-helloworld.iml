@@ -16,9 +16,9 @@
     <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.4" level="project" />
     <orderEntry type="library" name="Maven: com.zkejid.constructor:core-api:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.zkejid.constructor:core-impl:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: com.zkejid.constructor:javasdk-system-api:0.1.0-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.zkejid.constructor:javasdk-system-impl:0.1.0-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: com.zkejid.constructor:string-value-api:1.0.1" level="project" />
-    <orderEntry type="library" name="Maven: com.zkejid.constructor:string-value-impl:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.zkejid.constructor:javasdk-system-api:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.zkejid.constructor:javasdk-system-impl:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.zkejid.constructor:string-value-api:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.zkejid.constructor:string-value-impl:1.0.0" level="project" />
   </component>
 </module>

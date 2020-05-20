@@ -5,13 +5,15 @@
   <parent>
     <artifactId>cli-arguments</artifactId>
     <groupId>com.zkejid.constructor</groupId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>cli-arguments-helloworld</artifactId>
 
-  <description>Example project with usage of cli-arguments API</description>
+  <name>CLI Arguments module example application</name>
+  <description>Example application with usage of cli-arguments API</description>
+  <url>https://github.com/zkejidsconstructor/cli-arguments/tree/master/cli-arguments-helloworld</url>
 
   <build>
     <plugins>
@@ -79,4 +81,19 @@
     </dependency>
   </dependencies>
 
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Ivan Panfilov</name>
+      <email>developer@zkejid.com</email>
+      <organization>Zkejid</organization>
+      <organizationUrl>https://github.com/zkejid</organizationUrl>
+    </developer>
+  </developers>
 </project>
